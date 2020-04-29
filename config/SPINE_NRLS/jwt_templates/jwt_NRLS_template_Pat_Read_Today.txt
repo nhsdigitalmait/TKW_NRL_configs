@@ -1,0 +1,12 @@
+{
+	"iss": "https://cas.nhs.uk",
+	"sub": "https://fhir.nhs.uk/Id/accredited-system|200000000205",
+	"aud": "https://provider.thirdparty.nhs.uk/GP0001/STU3/1",
+	"exp": __CURRENT_UTC_PLUS_5_MIN__,
+	"iat": __CURRENT_UTC__,
+	"reason_for_request": "directcare",
+	"scope": "patient/*.read",
+	"requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205",
+	"requesting_organization": "https://fhir.nhs.uk/Id/ods-organization-code|RR8",
+	"requesting_user": "https://fhir.nhs.uk/Id/sds-role-profile-id|4387293874928"
+}

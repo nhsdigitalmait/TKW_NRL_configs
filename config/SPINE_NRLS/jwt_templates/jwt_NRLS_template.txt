@@ -1,0 +1,8 @@
+{
+	"iss": "https://rhm-hagar.cfh-nic.nhs.uk/",
+	"sub": "__PRACTITIONER_ID__",
+	"device": "112233667788",
+	"aud": "https://authorize.fhir.nhs.uk/token",
+	"exp": __CURRENT_UTC_PLUS_5_MIN__,
+	"iat": __CURRENT_UTC__
+}

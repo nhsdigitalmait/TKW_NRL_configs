@@ -1,0 +1,11 @@
+{
+	"iss": "https://citizen-id.nhs.uk",
+	"sub": "http://fhir.nhs.net/Id/nhs-number|6101231234",
+	"aud": "https://clinicals.spineservices.nhs.uk",
+	"exp": 1469436987,
+	"iat": 1469436687,
+	"reason_for_request": "patientaccess",
+	"scope": "patient/*.read patient/*.write",
+	"requesting_system": "https://fhir.nhs.uk/Id/accredited-system|200000000205",
+	"requesting_patient": "http://fhir.nhs.net/Id/nhs-number|6101231234"
+}

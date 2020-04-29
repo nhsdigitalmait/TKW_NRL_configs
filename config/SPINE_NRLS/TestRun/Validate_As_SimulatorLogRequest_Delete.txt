@@ -1,0 +1,1 @@
+VALIDATE-AS: SIMULATOR_LOG_REQUEST/urn:nhs:names:services:nrls:fhir:rest:delete:documentreference

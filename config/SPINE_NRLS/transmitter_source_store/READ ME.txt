@@ -1,0 +1,4 @@
+When using the NRLS transmitter, a file is required in the transmitter_source folder.
+
+For all message types except CREATE then use EMPTYFILE.TXT. For a CREATE there are a number of options available depending
+on the response that you want from the simulator. The filenames should identify the expected outcome.

@@ -1,0 +1,68 @@
+# Simulator rule definition file for ITK Testbench
+#  NRLS Messages
+#  Base 1.0.0 beta 			April 2018
+#  Updated  1.1.0 beta	    June 2018 (Multiple updates Read and Update removed).
+#  Updated 1.2.0 beta		August 2018
+BEGIN RESPONSES
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/responses.conf
+do_process	NONE	0
+END RESPONSES
+
+BEGIN SUBSTITUTIONS
+__MESSAGEID__	UUID
+__SPINEID__	UUID
+__TIMESTAMP__	ISO8601datetime
+__ERRORID__	UUID
+__ERRORCODE__	Literal	1000
+__ERRORTEXT__	Literal Invalid message
+__ERRORDETAIL__	Literal	Test message rejection
+__IDENTIFIER__ Literal 9999999999
+__DELAY__ Class org.warlock.tk.internalservices.rules.DelaySubstitution "9999999999 20"
+__ERRORTEXT_IVP__ Xpath concat(substring (concat('Failed to parse request body as JSON resource. Error was: ',replace(/fhirconversionfailure,'"','&quot;')), 1, string-length(concat('Failed to parse request body as JSON resource. Error was :',replace(/fhirconversionfailure,'"','&quot;')))), substring('__ERRORTEXT_IVP__', 1, number(not(/string-length(/fhirconversionfailure))) * string-length('__ERRORTEXT_IVP__')))
+__MASTERIDSYSTEM__ Xpath /fhir:DocumentReference/fhir:masterIdentifier/fhir:system/@value
+__MASTERIDVALUE__ Xpath /fhir:DocumentReference/fhir:masterIdentifier/fhir:value/@value
+__ORGANIZATION__ Xpath substring-after(/fhir:DocumentReference/fhir:custodian/fhir:reference/@value,'Organization/')
+__RE_CP_TAG__ reg_exp context_path "^/DocumentReference(.*)$" "$1"
+
+END SUBSTITUTIONS
+
+BEGIN EXPRESSIONS
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/HTTP_expressions.conf
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/search_expressions.conf
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/create_expressions.conf
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/delete_expressions.conf
+#
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_expressions.conf
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/err_id_expressions.conf
+#
+passthrough	Always
+END EXPRESSIONS
+
+# all these rules apply to the context path not the content because this is a set of rules for the restful rules engine 
+
+BEGIN RULE
+GET
+#GET+urn:nhs:names:services:nrls:fhir:rest:search:documentreference
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/search_rules.conf
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_rules.conf
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/err_id_rules.conf
+passthrough notFoundNRLS_Response
+END RULE
+
+BEGIN RULE
+POST
+#POST+urn:nhs:names:services:nrls:fhir:rest:create:documentreference
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/HTTP_rules.conf
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/create_rules.conf
+passthrough notFoundNRLS_Response
+END RULE
+
+BEGIN RULE
+DELETE
+#DELETE+urn:nhs:names:services:nrls:fhir:rest:delete:documentreference
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/delete_rules.conf
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_rules.conf
+INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/err_id_rules.conf
+passthrough notFoundNRLS_Response
+END RULE
+
