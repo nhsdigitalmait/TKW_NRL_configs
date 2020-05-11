@@ -4,7 +4,7 @@
 #  Updated  1.1.0 beta	    June 2018 (Multiple updates Read and Update removed).
 #  Updated 1.2.0 beta		August 2018
 BEGIN RESPONSES
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/responses.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/responses.conf
 do_process	NONE	0
 END RESPONSES
 
@@ -27,13 +27,13 @@ __RE_CP_TAG__ reg_exp context_path "^/DocumentReference(.*)$" "$1"
 END SUBSTITUTIONS
 
 BEGIN EXPRESSIONS
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/HTTP_expressions.conf
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/search_expressions.conf
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/create_expressions.conf
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/delete_expressions.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/HTTP_expressions.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/search_expressions.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/create_expressions.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/delete_expressions.conf
 #
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_expressions.conf
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/err_id_expressions.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_expressions.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_id_expressions.conf
 #
 passthrough	Always
 END EXPRESSIONS
@@ -43,26 +43,26 @@ END EXPRESSIONS
 BEGIN RULE
 GET
 #GET+urn:nhs:names:services:nrls:fhir:rest:search:documentreference
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/search_rules.conf
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_rules.conf
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/err_id_rules.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/search_rules.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_rules.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_id_rules.conf
 passthrough notFoundNRLS_Response
 END RULE
 
 BEGIN RULE
 POST
 #POST+urn:nhs:names:services:nrls:fhir:rest:create:documentreference
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/HTTP_rules.conf
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/create_rules.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/HTTP_rules.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/create_rules.conf
 passthrough notFoundNRLS_Response
 END RULE
 
 BEGIN RULE
 DELETE
 #DELETE+urn:nhs:names:services:nrls:fhir:rest:delete:documentreference
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/delete_rules.conf
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_rules.conf
-INCLUDE E:/_TEST/NRLS_SCHEMA/TKW/contrib/Common/simulator_packs/SPINE_NRLS/err_id_rules.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/delete_rules.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_rules.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_id_rules.conf
 passthrough notFoundNRLS_Response
 END RULE
 
