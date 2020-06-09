@@ -1,0 +1,17 @@
+<OperationOutcome xmlns="http://hl7.org/fhir">
+	<id value="__MESSAGEID____LASTTWENTY__"/>
+	<meta>
+		<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1"/>
+	</meta>
+	<issue>
+		<severity value=""/>
+		<code value=""/>
+		<details>
+			<coding>
+				<system value="https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1"/>
+				<code value="599"/>
+				<display value="599: Network Connect Timeout"/>
+			</coding>
+		</details>
+	</issue>
+</OperationOutcome>

@@ -13,6 +13,6 @@
 				<display value="Bad Request"/>
 			</coding>
 		</details>
-		<diagnostics value="Malformed request syntax. NRLS Create command command invalid syntax."/>
+		<diagnostics value="Malformed Create syntax. NRLS Create command invalid syntax."/>
 	</issue>
 </OperationOutcome>

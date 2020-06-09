@@ -3,6 +3,8 @@
 #  Base 1.0.0 beta 			April 2018
 #  Updated  1.1.0 beta	    June 2018 (Multiple updates Read and Update removed).
 #  Updated 1.2.0 beta		August 2018
+#  Updated 2.0.0 beta       April/May 2019 (Read and Update (PATCH) added.
+#							June 2019 (Read Retrieve (GET) added.
 BEGIN RESPONSES
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/responses.conf
 do_process	NONE	0
@@ -17,12 +19,22 @@ __ERRORCODE__	Literal	1000
 __ERRORTEXT__	Literal Invalid message
 __ERRORDETAIL__	Literal	Test message rejection
 __IDENTIFIER__ Literal 9999999999
+__LASTTWENTY__ Literal -1A2B3C4D5E6F7G8I9J0K
 __DELAY__ Class org.warlock.tk.internalservices.rules.DelaySubstitution "9999999999 20"
 __ERRORTEXT_IVP__ Xpath concat(substring (concat('Failed to parse request body as JSON resource. Error was: ',replace(/fhirconversionfailure,'"','&quot;')), 1, string-length(concat('Failed to parse request body as JSON resource. Error was :',replace(/fhirconversionfailure,'"','&quot;')))), substring('__ERRORTEXT_IVP__', 1, number(not(/string-length(/fhirconversionfailure))) * string-length('__ERRORTEXT_IVP__')))
 __MASTERIDSYSTEM__ Xpath /fhir:DocumentReference/fhir:masterIdentifier/fhir:system/@value
 __MASTERIDVALUE__ Xpath /fhir:DocumentReference/fhir:masterIdentifier/fhir:value/@value
 __ORGANIZATION__ Xpath substring-after(/fhir:DocumentReference/fhir:custodian/fhir:reference/@value,'Organization/')
 __RE_CP_TAG__ reg_exp context_path "^/DocumentReference(.*)$" "$1"
+__CP_NHS_NO__ reg_exp context_path "^.*Patient/([0-9]{10}).*$" "$1"
+__CP_MI__ reg_exp context_path "^.*identifier=(.*)$" "$1"
+__CP_MI1__ reg_exp context_path "^.*identifier=(.*)%7C.*$" "$1"
+__CP_MI2__ reg_exp context_path "^.*identifier=.*%7C(.*)$" "$1"
+__CP_SearchString__ reg_exp context_path "^$" "$1"
+
+__CP_SSstart__ reg_exp context_path "^(.*)&.*$" "$1"
+
+__CP_SSend__ reg_exp context_path "^.*&(.*)$" "$1"
 
 END SUBSTITUTIONS
 
@@ -31,6 +43,8 @@ INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/HTTP_expressions.conf
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/search_expressions.conf
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/create_expressions.conf
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/delete_expressions.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/update_expressions.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/retrieve_expressions.conf
 #
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_expressions.conf
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_id_expressions.conf
@@ -42,8 +56,9 @@ END EXPRESSIONS
 
 BEGIN RULE
 GET
-#GET+urn:nhs:names:services:nrls:fhir:rest:search:documentreference
+#GET+urn:nhs:names:services:nrl:DocumentReference.search
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/search_rules.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/retrieve_rules.conf
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_rules.conf
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_id_rules.conf
 passthrough notFoundNRLS_Response
@@ -51,7 +66,7 @@ END RULE
 
 BEGIN RULE
 POST
-#POST+urn:nhs:names:services:nrls:fhir:rest:create:documentreference
+#POST+urn:nhs:names:services:nrl:DocumentReference.create
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/HTTP_rules.conf
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/create_rules.conf
 passthrough notFoundNRLS_Response
@@ -59,10 +74,18 @@ END RULE
 
 BEGIN RULE
 DELETE
-#DELETE+urn:nhs:names:services:nrls:fhir:rest:delete:documentreference
+#DELETE+urn:nhs:names:services:nrl:DocumentReference.delete
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/delete_rules.conf
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_rules.conf
 INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_id_rules.conf
 passthrough notFoundNRLS_Response
 END RULE
 
+BEGIN RULE
+PATCH
+#PATCH+urn:nhs:names:services:nrl:DocumentReference.update
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/update_rules.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_nhsno_rules.conf
+INCLUDE TKW_ROOT/contrib/Common/simulator_packs/SPINE_NRLS/err_id_rules.conf
+passthrough notFoundNRLS_Response
+END RULE

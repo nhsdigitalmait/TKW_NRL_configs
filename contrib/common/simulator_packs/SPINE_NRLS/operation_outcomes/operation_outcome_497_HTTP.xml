@@ -1,0 +1,14 @@
+<OperationOutcome xmlns="http://hl7.org/fhir">
+	<id value="__MESSAGEID____LASTTWENTY__"/>
+	<issue>
+		<severity value="fatal"/>
+		<code value="forbidden"/>
+		<details>
+			<coding>
+				<system value="https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1"/>
+				<code value="497"/>
+				<display value="The plain HTTP request was sent to HTTPS port"/>
+			</coding>
+		</details>
+	</issue>
+</OperationOutcome>

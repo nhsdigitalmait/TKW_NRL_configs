@@ -1,0 +1,14 @@
+<OperationOutcome xmlns="http://hl7.org/fhir">
+	<id value="__MESSAGEID____LASTTWENTY__"/>
+	<issue>
+		<severity value=""/>
+		<code value=""/>
+		<details>
+			<coding>
+				<system value=""/>
+				<code value="495"/>
+				<display value="495: SSL Certificate Error"/>
+			</coding>
+		</details>
+	</issue>
+</OperationOutcome>

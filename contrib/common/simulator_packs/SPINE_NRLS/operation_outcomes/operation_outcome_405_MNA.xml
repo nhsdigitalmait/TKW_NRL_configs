@@ -1,0 +1,14 @@
+<OperationOutcome xmlns="http://hl7.org/fhir">
+	<id value="__MESSAGEID____LASTTWENTY__"/>
+	<issue>
+		<severity value="fatal"/>
+		<code value="forbidden"/>
+		<details>
+			<coding>
+				<system value="https://fhir.nhs.uk/StructureDefinition/spine-operationoutcome-1"/>
+				<code value="405"/>
+				<display value="405: Method Not Allowed"/>
+			</coding>
+		</details>
+	</issue>
+</OperationOutcome>

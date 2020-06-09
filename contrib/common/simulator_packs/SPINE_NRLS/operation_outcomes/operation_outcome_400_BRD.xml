@@ -13,6 +13,6 @@
 				<display value="Bad Request"/>
 			</coding>
 		</details>
-		<diagnostics value="Malformed request syntax. NRLS Delete command command invalid syntax."/>
+		<diagnostics value="Malformed request syntax. NRLS Delete command invalid syntax."/>
 	</issue>
 </OperationOutcome>

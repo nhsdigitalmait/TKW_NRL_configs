@@ -29,9 +29,13 @@ for %%f in (..\messages_for_validation\*.log) do (
 	copy ..\TestRun\Validate_As_SimulatorLogRequest_Delete.txt+..\messages_for_validation\message.cpy %%f /B >nul
 	)
 	
-	findstr /c:"GET" ..\messages_for_validation\message.cpy>temp1.txt
+	findstr /c:"GET /DocumentReference" ..\messages_for_validation\message.cpy>temp1.txt
 	for %%a in (temp1.txt) do if %%~za GTR 2 (
 	copy ..\TestRun\Validate_As_SimulatorLogRequest_Search.txt+..\messages_for_validation\message.cpy %%f /B >nul
+	)
+	findstr /c:"GET /http" ..\messages_for_validation\message.cpy>temp1.txt
+	for %%a in (temp1.txt) do if %%~za GTR 2 (
+	copy ..\TestRun\Validate_As_SimulatorLogRequest_ReadRetrieve.txt+..\messages_for_validation\message.cpy %%f /B >nul
 	)
 	
 	findstr /c:"POST" ..\messages_for_validation\message.cpy>temp1.txt
@@ -39,6 +43,10 @@ for %%f in (..\messages_for_validation\*.log) do (
 	copy ..\TestRun\Validate_As_SimulatorLogRequest_Create.txt+..\messages_for_validation\message.cpy %%f /B >nul
 	)
 	
+	findstr /c:"PATCH" ..\messages_for_validation\message.cpy>temp1.txt
+	for %%a in (temp1.txt) do if %%~za GTR 2 (
+	copy ..\TestRun\Validate_As_SimulatorLogRequest_Update.txt+..\messages_for_validation\message.cpy %%f /B >nul
+	)	
 	del ..\messages_for_validation\message.cpy >nul
 	del temp1.txt
 )

@@ -1,0 +1,14 @@
+<OperationOutcome xmlns="http://hl7.org/fhir">
+	<id value="__MESSAGEID____LASTTWENTY__"/>
+	<issue>
+		<severity value=""/>
+		<code value=""/>
+		<details>
+			<coding>
+				<system value="https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1"/>
+				<code value="496"/>
+				<display value="496: SSL Certificate required"/>
+			</coding>
+		</details>
+	</issue>
+</OperationOutcome>

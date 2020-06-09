@@ -1,5 +1,11 @@
 <?xml version="1.0"?>
-<Bundle xmlns="http://hl7.org/fhir">
-	<type value="searchset"/>
-	<total value = "0"/>
+<Bundle
+    xmlns="http://hl7.org/fhir">
+    <id value="__MESSAGEID__"/>
+    <type value="searchset"/>
+    <total value="0"/>
+    <link>
+        <relation value="self"/>
+        <url value="__CP_SSstart__&amp;__CP_SSend__"/>
+   </link>
 </Bundle>

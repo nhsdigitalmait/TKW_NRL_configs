@@ -1,0 +1,14 @@
+<OperationOutcome xmlns="http://hl7.org/fhir">
+	<id value="__MESSAGEID____LASTTWENTY__"/>
+	<issue>
+		<severity value=""/>
+		<code value=""/>
+		<details>
+			<coding>
+				<system value=""/>
+				<code value="444"/>
+				<display value="444: No Response"/>
+			</coding>
+		</details>
+	</issue>
+</OperationOutcome>

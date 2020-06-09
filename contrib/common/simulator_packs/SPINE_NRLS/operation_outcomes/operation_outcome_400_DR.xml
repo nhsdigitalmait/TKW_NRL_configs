@@ -1,5 +1,5 @@
 <OperationOutcome xmlns="http://hl7.org/fhir">
-	<id value="__MESSAGEID__"/>
+	<id value="__MESSAGEID____LASTTWENTY__"/>
 	<meta>
 		<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1"/>
 	</meta>
@@ -10,7 +10,7 @@
 			<coding>
 				<system value="https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1"/>
 				<code value="DUPLICATE_REJECTED"/>
-				<display value="Duplicate DocumentReference"/>
+				<display value="Create would lead to creation of a duplicate resource"/>
 			</coding>
 		</details>
 		<diagnostics value="Duplicate masterIdentifier value: __MASTERIDSYSTEM__ system: __MASTERIDVALUE__ "/>

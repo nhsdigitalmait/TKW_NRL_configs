@@ -1,5 +1,5 @@
 <OperationOutcome xmlns="http://hl7.org/fhir">
-	<id value="__MESSAGEID__"/>
+	<id value="__MESSAGEID____LASTTWENTY__"/>
 	<meta>
 		<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1"/>
 	</meta>
@@ -12,7 +12,7 @@
 				<code value="RESOURCE_CREATED"/>
 				<display value="New resource created"/>
 			</coding>
-			<text value="__SPINEID__"/>
+			<text value="__SPINEID____LASTTWENTY__"/>
 		</details>
 		<diagnostics value="Successfully created resource DocumentReference"/>
 	</issue>

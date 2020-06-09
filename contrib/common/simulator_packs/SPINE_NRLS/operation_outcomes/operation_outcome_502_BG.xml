@@ -1,0 +1,14 @@
+<OperationOutcome xmlns="http://hl7.org/fhir">
+	<id value="__MESSAGEID____LASTTWENTY__"/>
+	<issue>
+		<severity value="error"/>
+		<code value="transient"/>
+		<details>
+			<coding>
+				<system value="http://fhir.nhs.net/ValueSet/gpconnect-schedule-response-code-1-0"/>
+				<code value="502"/>
+			</coding>
+		</details>
+		<diagnostics value="ERROR_COMMUNICATING_TO_ENDPOINT_URL"/>
+	</issue>
+</OperationOutcome>

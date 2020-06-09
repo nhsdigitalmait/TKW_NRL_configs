@@ -14,6 +14,6 @@
 			</coding>
 			<text value="__SPINEID__"/>
 		</details>
-		<diagnostics value="Successfully removed resource DocumentReference:https://psis-sync.national.ncrs.nhs.uk/DocumentReference?_id=c037a0cb-12kl-4976-83a1-a5d2703e6aa3"/>
+		<diagnostics value="Successfully removed resource DocumentReference:https://psis-sync.national.ncrs.nhs.uk/DocumentReference?_id=c037a0cb-12kl-4976-83a1-a5d2703e6aa3-1a2b3c4d5e6f7g8h9i0j"/>
 	</issue>
 </OperationOutcome>

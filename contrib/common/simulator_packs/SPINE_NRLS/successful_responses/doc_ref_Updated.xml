@@ -1,0 +1,19 @@
+<OperationOutcome xmlns="http://hl7.org/fhir">
+	<id value="__MESSAGEID____LASTTWENTY__"/>
+	<meta>
+		<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/Spine-OperationOutcome-1"/>
+	</meta>
+	<issue>
+		<severity value="information"/>
+		<code value="informational"/>
+		<details>
+			<coding>
+				<system value="https://fhir.nhs.uk/STU3/CodeSystem/Spine-ErrorOrWarningCode-1"/>
+				<code value="RESOURCE_UPDATED"/>
+				<display value="Resource has been updated"/>
+			</coding>
+			<text value="__SPINEID____LASTTWENTY__"/>
+		</details>
+		<diagnostics value="Successfully updated resource DocumentReference"/>
+	</issue>
+</OperationOutcome>

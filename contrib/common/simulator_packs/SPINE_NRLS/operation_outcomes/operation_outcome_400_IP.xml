@@ -13,6 +13,6 @@
 				<display value="Invalid parameter"/>
 			</coding>
 		</details>
-		<diagnostics value="Guidance TBA"/>
+		<diagnostics value="Parameter is invalid"/>
 	</issue>
 </OperationOutcome>
